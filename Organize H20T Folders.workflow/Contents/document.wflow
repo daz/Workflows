@@ -234,9 +234,20 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>COMMAND_STRING</key>
-					<string>require 'fileutils'
+					<string>#!/usr/bin/env ruby
 
-FILENAME_REGEX = /^([A-Za-z0-9]+)_(\d{14})_(\d{4})_(S|T|W|Z)/
+# organize-h20t.rb [files]
+#   https://gist.github.com/daz/9c214125341ce7a3dc3909a1126297c8
+#   Organize H20T images, videos, and captions into folders by camera types, i.e. S, T, W, Z
+#   Creates a folder for each camera type, and moves the files into their respective folder
+
+# Usage:
+#   cd DJI_202208071450_002
+#   ./organize-h20t.rb DJI_20220807145439_0001_S.MP4 DJI_20220807145439_0001_T.MP4 DJI_20220807145439_0001_W.MP4 DJI_20220807145439_0001_Z.MP4
+
+require 'fileutils'
+
+FILENAME_REGEX = /^([A-Za-z0-9]+)_(\d{14})_(\d{4})_(S|T|W|Z)$/
 
 ARGF.each do |path|
   path = path.strip
@@ -365,7 +376,7 @@ end
 				<key>isViewVisible</key>
 				<integer>1</integer>
 				<key>location</key>
-				<string>833.000000:682.000000</string>
+				<string>833.000000:872.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -375,14 +386,14 @@ end
 	</array>
 	<key>connectors</key>
 	<dict>
-		<key>3F5DFF67-5721-4B55-B4D0-CA4DB5993DF0</key>
+		<key>A612C7A3-9248-48E5-B773-E6D862654375</key>
 		<dict>
 			<key>from</key>
 			<string>4F1DEFB7-E0E7-4079-9BD5-E24C6BC49ADF - 4F1DEFB7-E0E7-4079-9BD5-E24C6BC49ADF</string>
 			<key>to</key>
 			<string>C21E6E58-C3C8-455C-ABDB-D88EF6DFA413 - C21E6E58-C3C8-455C-ABDB-D88EF6DFA413</string>
 		</dict>
-		<key>90EDD8E8-52C7-47C6-BAB2-1BA1363AA91D</key>
+		<key>D46AD0DA-37A6-4DAA-9E20-76A29554CB46</key>
 		<dict>
 			<key>from</key>
 			<string>C21E6E58-C3C8-455C-ABDB-D88EF6DFA413 - C21E6E58-C3C8-455C-ABDB-D88EF6DFA413</string>
