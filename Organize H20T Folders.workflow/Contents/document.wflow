@@ -236,22 +236,23 @@
 					<key>COMMAND_STRING</key>
 					<string>require 'fileutils'
 
+FILENAME_REGEX = /^([A-Za-z0-9]+)_(\d{14})_(\d{4})_(S|T|W|Z)/
+
 ARGF.each do |path|
   path = path.strip
   extension = File.extname(path)
   filename = File.basename(path, extension)
   dir = File.expand_path("..", path)
 
-  next if !File.file?(path)
+  match = filename.match(FILENAME_REGEX)
+  next if !File.file?(path) || !match
 
-  if match = filename.match(/^(DJI)_(\d{14})_(\d{4})_(S|T|W|Z)/)
-    _, prefix, timestamp, number, camera = match.to_a
-    new_dir = File.join(dir, camera)
-    new_path = File.join(new_dir, path)
-    FileUtils.mkdir_p(new_dir)
-    FileUtils.mv(path, new_dir) 
-  end
-end</string>
+  _, prefix, timestamp, number, camera = match.to_a
+  new_dir = File.join(dir, camera)
+  FileUtils.mkdir_p(new_dir)
+  FileUtils.mv(path, new_dir)
+end
+</string>
 					<key>CheckedForUserDefaultShell</key>
 					<true/>
 					<key>inputMethod</key>
@@ -364,7 +365,7 @@ end</string>
 				<key>isViewVisible</key>
 				<integer>1</integer>
 				<key>location</key>
-				<string>833.000000:471.000000</string>
+				<string>833.000000:682.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -374,14 +375,14 @@ end</string>
 	</array>
 	<key>connectors</key>
 	<dict>
-		<key>0DF71393-5E8C-4CF3-9C70-E72F3841B4F2</key>
+		<key>3F5DFF67-5721-4B55-B4D0-CA4DB5993DF0</key>
 		<dict>
 			<key>from</key>
 			<string>4F1DEFB7-E0E7-4079-9BD5-E24C6BC49ADF - 4F1DEFB7-E0E7-4079-9BD5-E24C6BC49ADF</string>
 			<key>to</key>
 			<string>C21E6E58-C3C8-455C-ABDB-D88EF6DFA413 - C21E6E58-C3C8-455C-ABDB-D88EF6DFA413</string>
 		</dict>
-		<key>B8BE4D3B-D97B-4F57-946C-4C20A17E2BCA</key>
+		<key>90EDD8E8-52C7-47C6-BAB2-1BA1363AA91D</key>
 		<dict>
 			<key>from</key>
 			<string>C21E6E58-C3C8-455C-ABDB-D88EF6DFA413 - C21E6E58-C3C8-455C-ABDB-D88EF6DFA413</string>
